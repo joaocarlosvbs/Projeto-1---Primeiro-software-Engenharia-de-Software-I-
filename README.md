@@ -5,5 +5,4 @@ Mapa Mental
 <img width="954" height="344" alt="Sistema de Gestão-vendas - Bordados" src="https://github.com/user-attachments/assets/6bfb1a1b-5525-4774-b9c9-b3782ed51a85" />
 
 Prototipação das Interfaces
-
-https://www.figma.com/make/by9O09B6aHu2y8eMFCwNz6/Sistema-de-Vendas-de-Bordados--Prot%C3%B3tipo-das-interfaces-?t=sW4UgbNjIdLQ8jeV-1
+https://www.figma.com/make/by9O09B6aHu2y8eMFCwNz6/Sistema-de-Vendas-de-Bordados--Prot%C3%B3tipo-das-interfaces-?t=OymS2oUYvLZd4U5Z-20&fullscreen=1
