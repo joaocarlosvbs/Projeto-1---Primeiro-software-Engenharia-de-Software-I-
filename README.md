@@ -7,3 +7,6 @@ Mapa Mental
 Prototipação das Interfaces
 
 https://www.figma.com/make/by9O09B6aHu2y8eMFCwNz6/Sistema-de-Vendas-de-Bordados--Prot%C3%B3tipo-das-interfaces-?t=OymS2oUYvLZd4U5Z-20&fullscreen=1
+
+
+Modelagem do Banco de Dados (Em Produção)
