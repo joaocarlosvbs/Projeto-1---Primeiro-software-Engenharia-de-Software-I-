@@ -5,8 +5,8 @@ Este projeto consiste no desenvolvimento de um software aplicando metodologias d
 <img width="954" height="344" alt="Sistema de Gestão-vendas - Bordados" src="https://github.com/user-attachments/assets/6bfb1a1b-5525-4774-b9c9-b3782ed51a85" />
 
 *Prototipação das Interfaces*
-
-https://www.figma.com/make/by9O09B6aHu2y8eMFCwNz6/Sistema-de-Vendas-de-Bordados--Prot%C3%B3tipo-das-interfaces-?t=OymS2oUYvLZd4U5Z-20&fullscreen=1
+<img width="1919" height="897" alt="image" src="https://github.com/user-attachments/assets/d5f6e6fa-7787-4436-af9e-cb33583e21e9" />
+Link para acesso ao protótipo: https://www.figma.com/make/by9O09B6aHu2y8eMFCwNz6/Sistema-de-Vendas-de-Bordados--Prot%C3%B3tipo-das-interfaces-?t=OymS2oUYvLZd4U5Z-20&fullscreen=1
 
 
 *Modelagem do Banco de Dados (Em Produção)*
