@@ -10,3 +10,4 @@ https://www.figma.com/make/by9O09B6aHu2y8eMFCwNz6/Sistema-de-Vendas-de-Bordados-
 
 
 Modelagem do Banco de Dados (Em Produção)
+Link para acesso da modelagem visual: https://dbdiagram.io/d/Modelagem-BD-2-69e169a60f7c9ef2c019e745 
