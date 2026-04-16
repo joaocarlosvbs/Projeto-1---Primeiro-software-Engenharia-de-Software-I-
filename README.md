@@ -13,3 +13,7 @@ Modelagem do Banco de Dados (Em Produção)
 
 Link para acesso da modelagem visual: 
 https://dbdiagram.io/d/Modelagem-BD-2-69e169a60f7c9ef2c019e745 
+
+Diagrama de Casos de Uso (Em Produção)
+
+Especificação dos Casos de Uso (Em Produção)
