@@ -16,6 +16,6 @@ https://dbdiagram.io/d/Modelagem-BD-2-69e169a60f7c9ef2c019e745
 
 
 *Diagrama de Casos de Uso (Em Produção)*
-
+Link para acesso do diagrama visual: https://drive.google.com/file/d/1e4Hp9XqJ4eo5ux-UVD_gqWgmy-hShMAp/view?usp=sharing 
 
 *Especificação dos Casos de Uso (Em Produção)*
