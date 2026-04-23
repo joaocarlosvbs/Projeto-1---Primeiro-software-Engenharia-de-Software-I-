@@ -11,6 +11,8 @@ Link para acesso ao protótipo: https://www.figma.com/make/by9O09B6aHu2y8eMFCwNz
 
 *Modelagem do Banco de Dados (Em Produção)*
 <img width="1362" height="1086" alt="Untitled (1)" src="https://github.com/user-attachments/assets/7060e0ad-14dc-472a-b264-593003afde02" />
+[Modelagem BD 2.pdf](https://github.com/user-attachments/files/27028981/Modelagem.BD.2.pdf)
+
 Link para acesso da modelagem visual: 
 https://dbdiagram.io/d/Modelagem-BD-2-69e169a60f7c9ef2c019e745 
 
