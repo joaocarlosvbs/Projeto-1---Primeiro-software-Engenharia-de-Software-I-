@@ -9,8 +9,8 @@ Este projeto consiste no desenvolvimento de um software aplicando metodologias d
 Link para acesso ao protótipo: https://www.figma.com/make/by9O09B6aHu2y8eMFCwNz6/Sistema-de-Vendas-de-Bordados--Prot%C3%B3tipo-das-interfaces-?t=OymS2oUYvLZd4U5Z-20&fullscreen=1
 
 
-*Modelagem do Banco de Dados (Em Produção)*
-<img width="1362" height="1086" alt="Untitled (1)" src="https://github.com/user-attachments/assets/7060e0ad-14dc-472a-b264-593003afde02" />
+*Modelagem do Banco de Dados*
+<img width="2706" height="3197" alt="Modelagem BD 2" src="https://github.com/user-attachments/assets/1b4acf94-74cd-4c21-9939-210b6e6944dd" />
 [Modelagem BD 2.pdf](https://github.com/user-attachments/files/27028981/Modelagem.BD.2.pdf)
 
 Link para acesso da modelagem visual: 
