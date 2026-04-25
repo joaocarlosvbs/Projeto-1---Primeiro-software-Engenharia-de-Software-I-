@@ -10,15 +10,12 @@ Link para acesso ao protótipo: https://www.figma.com/make/by9O09B6aHu2y8eMFCwNz
 
 
 *Modelagem do Banco de Dados*
-<img width="2706" height="3197" alt="Modelagem BD 2" src="https://github.com/user-attachments/assets/1b4acf94-74cd-4c21-9939-210b6e6944dd" />
 <img width="1361" height="1054" alt="Modelo BD 1 (1)" src="https://github.com/user-attachments/assets/30332c89-6b94-40cf-b951-178ee52a152b" />
-
-[Modelagem BD 2.pdf](https://github.com/user-attachments/files/27028981/Modelagem.BD.2.pdf)
 [Modelo BD 1.pdf](https://github.com/user-attachments/files/27069408/Modelo.BD.1.pdf)
 
 
 Link para acesso da modelagem visual: 
-https://dbdiagram.io/d/Modelagem-BD-2-69e169a60f7c9ef2c019e745 
+[https://dbdiagram.io/d/Modelo-BD-1-69e169810f7c9ef2c019e64c](https://dbdiagram.io/d/Modelo-BD-1-69e169810f7c9ef2c019e64c) 
 
 
 *Diagrama de Casos de Uso (Em Produção)*
