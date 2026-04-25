@@ -11,6 +11,11 @@ Link para acesso ao protótipo: https://www.figma.com/make/by9O09B6aHu2y8eMFCwNz
 
 *Modelagem do Banco de Dados*
 <img width="1361" height="1054" alt="Modelo BD 1 (1)" src="https://github.com/user-attachments/assets/30332c89-6b94-40cf-b951-178ee52a152b" />
+
+<img width="1407" height="1237" alt="Modelo BD 1" src="https://github.com/user-attachments/assets/e0744faa-9143-4954-b79c-6bf8493bb50c" />
+[Modelo BD 1.pdf](https://github.com/user-attachments/files/27070663/Modelo.BD.1.pdf)
+
+
 [Modelo BD 1.pdf](https://github.com/user-attachments/files/27069408/Modelo.BD.1.pdf)
 
 
