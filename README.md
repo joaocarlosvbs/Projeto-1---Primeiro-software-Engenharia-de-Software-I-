@@ -18,6 +18,9 @@ Link para acesso da modelagem visual:
 
 
 *Diagrama de Casos de Uso (Em Produção)*
-Link para acesso do diagrama visual: https://drive.google.com/file/d/1e4Hp9XqJ4eo5ux-UVD_gqWgmy-hShMAp/view?usp=sharing 
+<img width="1778" height="1722" alt="VLRDRXit4BuBq3iCV8boa63AFx8CruWgnqu06pMisfUs1sevbeXmIPNafcxQFapHGv5pq2VGYtN8rVxHJWuwZ6Q-ZvoPZpFxndbkVP6hVa_XemTlmChLseEG5ZClZUxtt0UfDzpo73Oy-y1NkF2_AuJWvtgbi1tXrboOtwHUmIDNZbpz7i-yiR0tLnArnptW3Z9L__s0Mg0mzcSz" src="https://github.com/user-attachments/assets/6f0b3be0-c530-4431-b28c-ccf111a8d2bf" />
+[Diagrama de casos de uso.pdf](https://github.com/user-attachments/files/27147632/Diagrama.de.casos.de.uso.pdf)
+
+Link para acesso do diagrama visual: 
 
 *Especificação dos Casos de Uso (Em Produção)*
