@@ -1,0 +1,33 @@
+{
+  "name": "projeto-1---primeiro-software-engenharia-de-software-i-",
+  "version": "1.0.0",
+  "description": "Este projeto consiste no desenvolvimento de um software aplicando metodologias de engenharia de software, com o objetivo de criar um sistema organizado, estruturado e funcional na prática, seguindo padrões e processos utilizados no ambiente profissional.",
+  "main": "index.js",
+  "scripts": {
+  "dev": "nodemon src/server.js",
+  "start": "node src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joaocarlosvbs/Projeto-1---Primeiro-software-Engenharia-de-Software-I-.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/joaocarlosvbs/Projeto-1---Primeiro-software-Engenharia-de-Software-I-/issues"
+  },
+  "homepage": "https://github.com/joaocarlosvbs/Projeto-1---Primeiro-software-Engenharia-de-Software-I-#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "pg": "^8.21.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
