@@ -1,0 +1,11 @@
+const express = require('express');
+const router = express.Router();
+const ctrl = require('../controllers/relatorios.controller');
+const { verificarToken, apenasAdmin } = require('../middlewares/auth.middleware');
+router.use(verificarToken, apenasAdmin);
+router.get('/vendas-periodo', ctrl.vendasPeriodo);
+router.get('/lucro-produto', ctrl.lucroPorProduto);
+router.get('/mais-vendidos', ctrl.maisVendidos);
+router.get('/vendas-cliente', ctrl.vendasPorCliente);
+router.get('/aniversariantes', ctrl.aniversariantes);
+module.exports = router;
