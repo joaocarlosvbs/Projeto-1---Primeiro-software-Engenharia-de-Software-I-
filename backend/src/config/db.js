@@ -1,3 +1,5 @@
+// db.js — Conexão com o PostgreSQL
+// Pool reutiliza conexões abertas em vez de abrir uma nova a cada requisição
 const { Pool } = require('pg');
 require('dotenv').config();
 

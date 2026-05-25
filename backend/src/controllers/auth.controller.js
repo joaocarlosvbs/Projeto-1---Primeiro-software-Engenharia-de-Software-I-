@@ -1,11 +1,16 @@
+// auth.controller.js — Lógica de cadastro e login
+// bcryptjs: transforma a senha em hash antes de salvar (nunca salvamos senha pura)
+// jwt: gera o token que o frontend usa para provar que está autenticado
+
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const pool = require('../config/db');
 
-// UC02 — Cadastro
+// UC02 — Cadastro de novo usuário
 exports.cadastro = async (req, res) => {
   const { nome, email, senha, nivel_acesso } = req.body;
   try {
+    // Verifica se o e-mail já existe no banco
     const existe = await pool.query(
       'SELECT id FROM Usuario WHERE email = $1', [email]
     );
@@ -13,6 +18,7 @@ exports.cadastro = async (req, res) => {
       return res.status(400).json({ erro: 'E-mail já cadastrado.' });
     }
 
+    // Criptografa a senha antes de salvar
     const senhaHash = await bcrypt.hash(senha, 10);
 
     const resultado = await pool.query(
@@ -35,6 +41,7 @@ exports.cadastro = async (req, res) => {
 exports.login = async (req, res) => {
   const { email, senha } = req.body;
   try {
+    // Busca o usuário ativo pelo e-mail
     const resultado = await pool.query(
       'SELECT * FROM Usuario WHERE email = $1 AND deleted_at IS NULL',
       [email]
@@ -45,12 +52,14 @@ exports.login = async (req, res) => {
     }
 
     const usuario = resultado.rows[0];
-    const senhaValida = await bcrypt.compare(senha, usuario.senha_hash);
 
+    // Compara a senha digitada com o hash salvo
+    const senhaValida = await bcrypt.compare(senha, usuario.senha_hash);
     if (!senhaValida) {
       return res.status(401).json({ erro: 'E-mail ou senha inválidos.' });
     }
 
+    // Gera token JWT válido por 8 horas
     const token = jwt.sign(
       { id: usuario.id, nome: usuario.nome, nivel: usuario.nivel_acesso },
       process.env.JWT_SECRET,
