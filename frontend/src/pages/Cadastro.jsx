@@ -5,7 +5,7 @@ import api from '../services/api';
 import { useAuth } from '../context/AuthContext';
 
 export default function Cadastro() {
-  const [form, setForm] = useState({ nome: '', email: '', senha: '', confirmarSenha: '' });
+  const [form, setForm] = useState({ nome: '', email: '', senha: '', confirmarSenha: '', telefone: '' });
   const [erro, setErro] = useState('');
   const [carregando, setCarregando] = useState(false);
   const { login } = useAuth();
@@ -69,6 +69,13 @@ export default function Cadastro() {
             type="email" name="email" value={form.email}
             onChange={handleChange} required
             style={styles.input} placeholder="seu@email.com"
+          />
+
+          <label style={styles.label}>Telefone</label>
+          <input
+          type="tel" name="telefone" value={form.telefone || ''}
+          onChange={handleChange}
+          style={styles.input} placeholder="(11) 99999-9999"
           />
 
           <label style={styles.label}>Senha</label>

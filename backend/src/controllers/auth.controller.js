@@ -36,9 +36,9 @@ exports.cadastro = async (req, res) => {
     if (nivel === 'Cliente') {
       await client.query(
         `INSERT INTO Cliente (usuario_id, nome_completo, telefone, aceitou_lgpd, data_aceite_lgpd)
-         VALUES ($1, $2, $3, true, NOW())`,
-        [usuario.id, nome, telefone || '']
-      );
+        VALUES ($1, $2, $3, true, NOW())`,
+        [usuario.id, nome, telefone || 'A preencher']  // ← telefone com fallback
+        );
     }
 
     await client.query('COMMIT');
