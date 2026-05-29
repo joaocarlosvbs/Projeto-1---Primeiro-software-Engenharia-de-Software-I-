@@ -6,10 +6,17 @@ require('dotenv').config();
 const app = express();
 
 app.use(cors({
-  origin: [
-    'http://localhost:5173',
-    process.env.FRONTEND_URL || 'http://localhost:5173',
-  ],
+  origin: function(origin, callback) {
+    const permitidas = [
+      'http://localhost:5173',
+      'https://artesanato-c8myjyk6g-joaocarlosvbs-projects.vercel.app',
+    ];
+    if (!origin || permitidas.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('CORS bloqueado: ' + origin));
+    }
+  },
   credentials: true,
 }));
 app.use(express.json());
