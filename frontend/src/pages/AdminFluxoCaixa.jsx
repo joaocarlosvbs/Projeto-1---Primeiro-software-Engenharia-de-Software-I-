@@ -1,6 +1,7 @@
 // AdminFluxoCaixa.jsx — UC13: Fluxo de Caixa
 import { useState, useEffect } from 'react';
 import api from '../services/api';
+import BotaoVoltar from '../components/BotaoVoltar';
 
 export default function AdminFluxoCaixa() {
   const [transacoes, setTransacoes] = useState([]);
@@ -29,6 +30,7 @@ export default function AdminFluxoCaixa() {
 
   return (
     <div style={s.container}>
+      <BotaoVoltar para="/admin" />
       <h1 style={s.titulo}>💸 Fluxo de Caixa</h1>
 
       <form onSubmit={handleFiltrar} style={s.filtroRow}>

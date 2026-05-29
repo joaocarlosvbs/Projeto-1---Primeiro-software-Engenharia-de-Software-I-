@@ -62,9 +62,6 @@ export default function AreaCliente() {
                     <span>🚚 Entrega prevista: {new Date(pedido.data_entrega).toLocaleDateString('pt-BR')}</span>
                   )}
                   <span>💰 Total: R$ {parseFloat(pedido.valor_total).toFixed(2).replace('.', ',')}</span>
-                  {pedido.valor_pago_sinal > 0 && (
-                    <span>✅ Sinal pago: R$ {parseFloat(pedido.valor_pago_sinal).toFixed(2).replace('.', ',')}</span>
-                  )}
                 </div>
 
                 {pedido.itens && (

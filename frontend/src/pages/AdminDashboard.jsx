@@ -115,6 +115,7 @@ export default function AdminDashboard() {
           {to:'/admin/clientes', label:'👤 Clientes'},
           {to:'/admin/usuarios', label:'🔑 Permissões'},
           {to:'/admin/financeiro', label:'💸 Fluxo de Caixa'},
+          {to:'/admin/logs', label:'📋 Logs de Auditoria'},
           {to:'/admin/relatorios', label:'📊 Relatórios'},
         ].map(a => <Link key={a.to} to={a.to} style={s.btnAtalho}>{a.label}</Link>)}
       </div>

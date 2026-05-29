@@ -1,6 +1,7 @@
 // AdminRelatorios.jsx — UC14: Relatórios gerenciais
 import { useState } from 'react';
 import api from '../services/api';
+import BotaoVoltar from '../components/BotaoVoltar';
 
 const TIPOS = [
   { id: 'vendas-periodo', label: '📅 Vendas por Período', colunas: ['Data','Pedidos','Receita'] },
@@ -55,6 +56,7 @@ export default function AdminRelatorios() {
 
   return (
     <div style={s.container}>
+      <BotaoVoltar para="/admin" />
       <h1 style={s.titulo}>📊 Relatórios Gerenciais</h1>
 
       <div style={s.painel}>

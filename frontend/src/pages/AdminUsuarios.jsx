@@ -1,6 +1,7 @@
 // AdminUsuarios.jsx — UC16: Gerenciar permissões
 import { useState, useEffect } from 'react';
 import api from '../services/api';
+import BotaoVoltar from '../components/BotaoVoltar';
 import { useAuth } from '../context/AuthContext';
 
 export default function AdminUsuarios() {
@@ -27,6 +28,7 @@ export default function AdminUsuarios() {
 
   return (
     <div style={s.container}>
+      <BotaoVoltar para="/admin" />
       <h1 style={s.titulo}>🔑 Gerenciar Permissões</h1>
       <p style={{color:'#666', marginBottom:'1.5rem'}}>
         Altere o nível de acesso dos usuários cadastrados. As alterações têm efeito imediato na próxima sessão do usuário.

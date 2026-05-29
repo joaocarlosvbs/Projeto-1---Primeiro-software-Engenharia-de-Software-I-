@@ -1,6 +1,7 @@
 // AdminMateriaPrima.jsx — UC06
 import { useState, useEffect } from 'react';
 import api from '../services/api';
+import BotaoVoltar from '../components/BotaoVoltar';
 
 const VAZIO = { nome: '', unidade_medida: 'un', estoque_minimo: 5 };
 const UNIDADES = ['un', 'metros', 'rolos', 'kg', 'gramas', 'litros'];
@@ -25,6 +26,7 @@ export default function AdminMateriaPrima() {
 
   return (
     <div style={s.container}>
+      <BotaoVoltar para="/admin" />
       <h1 style={s.titulo}>📦 Matérias-Primas</h1>
       <div style={s.formCard}>
         <h2 style={s.sub}>{editId ? `Editando #${editId}` : '+ Cadastrar Insumo'}</h2>

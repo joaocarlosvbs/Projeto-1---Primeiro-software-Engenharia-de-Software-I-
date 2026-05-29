@@ -1,6 +1,8 @@
 // AdminProdutos.jsx — UC04: Admin cadastra e gerencia produtos
 import { useState, useEffect } from 'react';
 import api from '../services/api';
+import { CATEGORIAS } from '../config/site';
+import BotaoVoltar from '../components/BotaoVoltar';
 
 const FORM_VAZIO = { nome: '', categoria: '', preco_venda: '', visivel_portfolio: true };
 

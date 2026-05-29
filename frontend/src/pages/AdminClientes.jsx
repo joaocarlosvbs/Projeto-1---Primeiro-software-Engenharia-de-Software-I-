@@ -1,6 +1,7 @@
 // AdminClientes.jsx — UC03: Admin gerencia clientes
 import { useState, useEffect } from 'react';
 import api from '../services/api';
+import BotaoVoltar from '../components/BotaoVoltar';
 
 export default function AdminClientes() {
   const [clientes, setClientes] = useState([]);

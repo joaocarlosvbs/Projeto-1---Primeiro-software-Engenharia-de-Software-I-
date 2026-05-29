@@ -1,6 +1,7 @@
 // AdminFornecedores.jsx — UC05
 import { useState, useEffect } from 'react';
 import api from '../services/api';
+import BotaoVoltar from '../components/BotaoVoltar';
 
 const VAZIO = { razao_social: '', telefone: '', email: '' };
 
@@ -30,6 +31,7 @@ export default function AdminFornecedores() {
 
   return (
     <div style={s.container}>
+      <BotaoVoltar para="/admin" />
       <h1 style={s.titulo}>🏭 Fornecedores</h1>
       <div style={s.formCard}>
         <h2 style={s.sub}>{editId ? `Editando #${editId}` : '+ Novo Fornecedor'}</h2>

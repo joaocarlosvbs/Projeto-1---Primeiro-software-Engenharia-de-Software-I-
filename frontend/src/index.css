@@ -1,9 +1,73 @@
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background-color: #f8fafc;
-  color: #1a1a2e;
-  line-height: 1.6;
+/* index.css — Estilos globais responsivos */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --primaria: #1e3a8a;
+  --secundaria: #f97316;
+  --sucesso: #059669;
+  --erro: #dc2626;
+  --fundo: #f0f4ff;
+  --card: #ffffff;
+  --texto: #1e293b;
+  --texto-suave: #64748b;
+  --borda: #e2e8f0;
+  --sombra: 0 2px 16px rgba(0,0,0,0.08);
 }
-a { text-decoration: none; }
-button { font-family: inherit; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: var(--fundo);
+  color: var(--texto);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+a { text-decoration: none; color: inherit; }
+button { font-family: inherit; cursor: pointer; }
+input, select, textarea { font-family: inherit; }
+img { max-width: 100%; }
+
+/* Scrollbar customizada */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 3px; }
+
+/* Hamburguer — só mobile */
+@media (max-width: 768px) {
+  nav button[aria-label="Menu"] { display: block !important; }
+  nav > div:last-child { display: none; }
+}
+
+/* Utilitários responsivos */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+@media (max-width: 640px) {
+  .container { padding: 0 1rem; }
+  h1 { font-size: 1.6rem !important; }
+  h2 { font-size: 1.3rem !important; }
+}
+
+/* Tabelas responsivas */
+.tabela-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+/* Animação suave de entrada */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-in { animation: fadeIn 0.25s ease; }
+
+/* Toast de notificação */
+.toast {
+  position: fixed; bottom: 1.5rem; right: 1.5rem;
+  padding: 0.875rem 1.25rem; border-radius: 10px;
+  font-weight: 600; font-size: 0.9rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  z-index: 9999; animation: fadeIn 0.3s ease;
+  max-width: 320px;
+}
+.toast-sucesso { background: #d1fae5; color: #065f46; border-left: 4px solid #059669; }
+.toast-erro    { background: #fee2e2; color: #dc2626; border-left: 4px solid #dc2626; }
+.toast-info    { background: #dbeafe; color: #1e40af; border-left: 4px solid #1e3a8a; }

@@ -1,6 +1,7 @@
 // AdminCompras.jsx — UC10: Registrar compra de insumos
 import { useState, useEffect } from 'react';
 import api from '../services/api';
+import BotaoVoltar from '../components/BotaoVoltar';
 
 export default function AdminCompras() {
   const [compras, setCompras] = useState([]);
@@ -38,6 +39,7 @@ export default function AdminCompras() {
 
   return (
     <div style={s.container}>
+      <BotaoVoltar para="/admin" />
       <h1 style={s.titulo}>🛒 Registrar Compra de Insumos</h1>
       <p style={{color:'#666', marginBottom:'1.5rem'}}>
         Ao registrar uma compra, o sistema atualiza o estoque da matéria-prima e lança a despesa no fluxo de caixa automaticamente.

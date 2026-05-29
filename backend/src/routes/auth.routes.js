@@ -1,9 +1,8 @@
-// auth.routes.js — Endpoints públicos de autenticação
 const express = require('express');
 const router = express.Router();
-const authController = require('../controllers/auth.controller');
-
-router.post('/cadastro', authController.cadastro); // UC02
-router.post('/login', authController.login);        // UC01
-
+const ctrl = require('../controllers/auth.controller');
+router.post('/cadastro',        ctrl.cadastro);
+router.post('/login',           ctrl.login);
+router.post('/verificar-email', ctrl.verificarEmail);
+router.post('/redefinir-senha', ctrl.redefinirSenha);
 module.exports = router;
