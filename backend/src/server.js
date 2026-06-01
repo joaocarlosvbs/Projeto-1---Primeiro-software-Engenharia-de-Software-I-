@@ -1,4 +1,3 @@
-// server.js — Backend completo
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
@@ -6,12 +5,24 @@ require('dotenv').config();
 const app = express();
 
 app.use(cors({
-  origin: [
-    'http://localhost:5173',
-    process.env.FRONTEND_URL || 'http://localhost:5173',
-  ],
+  origin: function(origin, callback) {
+    // Permite: localhost, qualquer subdominio vercel.app, e a URL customizada do .env
+    const permitido =
+      !origin ||
+      origin.startsWith('http://localhost') ||
+      origin.endsWith('.vercel.app') ||
+      origin === process.env.FRONTEND_URL;
+
+    if (permitido) {
+      callback(null, true);
+    } else {
+      console.warn('CORS bloqueado para origem:', origin);
+      callback(new Error('CORS: origem não permitida'));
+    }
+  },
   credentials: true,
 }));
+
 app.use(express.json());
 
 app.get('/', (req, res) => res.json({ mensagem: '✅ API funcionando!' }));
@@ -30,4 +41,13 @@ app.use('/api/relatorios',   require('./routes/relatorios.routes'));
 app.use('/api/logs',         require('./routes/logs.routes'));
 
 const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => console.log(`🚀 Servidor em http://localhost:${PORT}`));
+const server = app.listen(PORT, () => {
+  console.log(`🚀 Servidor em http://localhost:${PORT}`);
+});
+
+server.on('error', (err) => {
+  if (err.code === 'EADDRINUSE') {
+    console.error(`❌ Porta ${PORT} já está em uso.`);
+    process.exit(1);
+  }
+});
