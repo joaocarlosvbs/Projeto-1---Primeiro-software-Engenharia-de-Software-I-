@@ -1,31 +1,23 @@
 const express = require('express');
-const cors = require('cors');
+const cors    = require('cors');
+const path    = require('path');
 require('dotenv').config();
 
 const app = express();
 
 app.use(cors({
-  origin: function(origin, callback) {
-    // Permite: localhost, qualquer subdominio vercel.app, e a URL customizada do .env
-    const permitido =
-      !origin ||
-      origin.startsWith('http://localhost') ||
-      origin.endsWith('.vercel.app') ||
-      origin === process.env.FRONTEND_URL;
-
-    if (permitido) {
-      callback(null, true);
-    } else {
-      console.warn('CORS bloqueado para origem:', origin);
-      callback(new Error('CORS: origem não permitida'));
-    }
+  origin: (origin, cb) => {
+    const ok = !origin || origin.startsWith('http://localhost') || origin.endsWith('.vercel.app');
+    ok ? cb(null,true) : cb(new Error('CORS bloqueado'));
   },
   credentials: true,
 }));
-
 app.use(express.json());
 
-app.get('/', (req, res) => res.json({ mensagem: '✅ API funcionando!' }));
+// Serve imagens locais (apenas em desenvolvimento)
+app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
+
+app.get('/', (req, res) => res.json({ mensagem: '✅ API Vitrine Bordados!' }));
 
 app.use('/api/auth',         require('./routes/auth.routes'));
 app.use('/api/produtos',     require('./routes/produtos.routes'));
@@ -41,13 +33,4 @@ app.use('/api/relatorios',   require('./routes/relatorios.routes'));
 app.use('/api/logs',         require('./routes/logs.routes'));
 
 const PORT = process.env.PORT || 3001;
-const server = app.listen(PORT, () => {
-  console.log(`🚀 Servidor em http://localhost:${PORT}`);
-});
-
-server.on('error', (err) => {
-  if (err.code === 'EADDRINUSE') {
-    console.error(`❌ Porta ${PORT} já está em uso.`);
-    process.exit(1);
-  }
-});
+app.listen(PORT, () => console.log(`🚀 Servidor em http://localhost:${PORT}`));

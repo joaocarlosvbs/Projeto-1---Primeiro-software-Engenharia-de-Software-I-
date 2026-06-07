@@ -1,15 +1,17 @@
-// produtos.routes.js — Endpoints do catálogo de produtos
 const express = require('express');
-const router = express.Router();
-const produtosController = require('../controllers/produtos.controller');
+const router  = express.Router();
+const ctrl    = require('../controllers/produtos.controller');
 const { verificarToken, apenasAdmin } = require('../middlewares/auth.middleware');
+const { upload } = require('../middlewares/upload.middleware');
 
-// Rota PÚBLICA — qualquer visitante pode ver o portfólio (UC04)
-router.get('/portfolio', produtosController.listarPortfolio);
+router.get('/portfolio', ctrl.listarPortfolio);
+router.get('/',          verificarToken, apenasAdmin, ctrl.listarTodos);
+router.post('/',         verificarToken, apenasAdmin, ctrl.criar);
+router.put('/:id',       verificarToken, apenasAdmin, ctrl.atualizar);
+router.delete('/:id',    verificarToken, apenasAdmin, ctrl.excluir);
 
-// Rotas PRIVADAS — apenas usuários logados
-router.get('/', verificarToken, produtosController.listarTodos);
-router.post('/', verificarToken, apenasAdmin, produtosController.criar);
-router.put('/:id', verificarToken, apenasAdmin, produtosController.atualizar);
+// Imagem
+router.post('/:id/imagem',   verificarToken, apenasAdmin, upload.single('imagem'), ctrl.uploadImagem);
+router.delete('/:id/imagem', verificarToken, apenasAdmin, ctrl.removerImagem);
 
 module.exports = router;
