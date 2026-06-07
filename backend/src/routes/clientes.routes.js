@@ -1,12 +1,13 @@
-// clientes.routes.js — Endpoints de clientes
+// clientes.routes.js
 const express = require('express');
-const router = express.Router();
-const clientesController = require('../controllers/clientes.controller');
+const router  = express.Router();
+const ctrl    = require('../controllers/clientes.controller');
 const { verificarToken, apenasAdmin } = require('../middlewares/auth.middleware');
 
 router.use(verificarToken);
 
-router.get('/', apenasAdmin, clientesController.listar);           // UC03 — Admin lista clientes
-router.delete('/:id/lgpd', apenasAdmin, clientesController.excluirLGPD); // UC17 — LGPD
+router.get('/',                 apenasAdmin, ctrl.listar);
+router.put('/:id/aniversario',  apenasAdmin, ctrl.atualizarAniversario);
+router.delete('/:id/lgpd',      apenasAdmin, ctrl.excluirLGPD);
 
 module.exports = router;

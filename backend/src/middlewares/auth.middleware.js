@@ -1,29 +1,24 @@
-// auth.middleware.js — Proteção de rotas privadas
-// Verifica se o token JWT enviado pelo frontend é válido.
-// Rotas que usarem este middleware só funcionam para usuários logados.
-
+// auth.middleware.js — com suporte ao nível Vendedor
 const jwt = require('jsonwebtoken');
 
+// Verifica se o token JWT é válido
 const verificarToken = (req, res, next) => {
-  // O token vem no header "Authorization: Bearer <token>"
   const authHeader = req.headers['authorization'];
-  const token = authHeader && authHeader.split(' ')[1];
+  const token      = authHeader && authHeader.split(' ')[1];
 
   if (!token) {
     return res.status(401).json({ erro: 'Acesso negado. Token não fornecido.' });
   }
-
   try {
-    // Decodifica o token e coloca os dados do usuário em req.usuario
-    const dados = jwt.verify(token, process.env.JWT_SECRET);
-    req.usuario = dados;
-    next(); // Segue para a rota protegida
-  } catch (err) {
+    const dados    = jwt.verify(token, process.env.JWT_SECRET);
+    req.usuario    = dados;
+    next();
+  } catch {
     return res.status(403).json({ erro: 'Token inválido ou expirado.' });
   }
 };
 
-// Middleware adicional: verifica se o usuário é Administrador
+// Apenas Administrador
 const apenasAdmin = (req, res, next) => {
   if (req.usuario.nivel !== 'Administrador') {
     return res.status(403).json({ erro: 'Acesso restrito ao Administrador.' });
@@ -31,4 +26,13 @@ const apenasAdmin = (req, res, next) => {
   next();
 };
 
-module.exports = { verificarToken, apenasAdmin };
+// Administrador OU Vendedor (operações comerciais)
+const adminOuVendedor = (req, res, next) => {
+  const niveisPermitidos = ['Administrador', 'Vendedor'];
+  if (!niveisPermitidos.includes(req.usuario.nivel)) {
+    return res.status(403).json({ erro: 'Acesso restrito a Administrador ou Vendedor.' });
+  }
+  next();
+};
+
+module.exports = { verificarToken, apenasAdmin, adminOuVendedor };

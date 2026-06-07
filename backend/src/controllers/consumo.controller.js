@@ -1,34 +1,44 @@
-// consumo.controller.js — UC09: Registrar consumo de produção (baixa de estoque)
-// Acionado quando o status do pedido muda para "Finalizado".
-// Permite que a artesã informe exatamente quanto material gastou.
-// Mesmo com estoque insuficiente, a gravação é permitida (sinalizada em vermelho).
-
+// consumo.controller.js — UC09
+// item_pedido_id é opcional — o sistema aceita registrar pelo pedido_id
 const pool = require('../config/db');
 
 exports.registrar = async (req, res) => {
-  const { item_pedido_id, materia_prima_id, quantidade_usada } = req.body;
+  const { materia_prima_id, quantidade_usada, item_pedido_id, pedido_id } = req.body;
+
+  if (!materia_prima_id || !quantidade_usada) {
+    return res.status(400).json({ erro: 'Material e quantidade são obrigatórios.' });
+  }
+
   const client = await pool.connect();
   try {
     await client.query('BEGIN');
 
-    // Verifica estoque atual
+    // Busca o estoque atual para verificar
     const mpRes = await client.query(
-      'SELECT quantidade_atual, nome FROM MateriaPrima WHERE id=$1', [materia_prima_id]
+      'SELECT quantidade_atual, nome, estoque_minimo FROM MateriaPrima WHERE id = $1',
+      [materia_prima_id]
     );
+    if (mpRes.rows.length === 0) {
+      await client.query('ROLLBACK');
+      return res.status(404).json({ erro: 'Matéria-prima não encontrada.' });
+    }
     const mp = mpRes.rows[0];
-    const estoqueInsuficiente = mp.quantidade_atual < quantidade_usada;
+    const estoqueInsuficiente = parseFloat(mp.quantidade_atual) < parseFloat(quantidade_usada);
 
-    // Registra o consumo (mesmo se insuficiente — UC09 [E1])
+    // Registra o consumo
+    // item_pedido_id pode ser NULL quando chamado direto do pedido
     await client.query(
-      `INSERT INTO ConsumoProducao (item_pedido_id, materia_prima_id, quantidade_usada)
+      `INSERT INTO ConsumoProducao
+         (item_pedido_id, materia_prima_id, quantidade_usada)
        VALUES ($1, $2, $3)`,
-      [item_pedido_id, materia_prima_id, quantidade_usada]
+      [item_pedido_id || null, materia_prima_id, quantidade_usada]
     );
 
-    // Subtrai do estoque (pode ficar negativo — alerta visual)
+    // Subtrai do estoque (permite ficar negativo — UC09 [E1])
     await client.query(
       `UPDATE MateriaPrima
-       SET quantidade_atual = quantidade_atual - $1, updated_at = NOW()
+       SET quantidade_atual = quantidade_atual - $1,
+           updated_at = NOW()
        WHERE id = $2`,
       [quantidade_usada, materia_prima_id]
     );
@@ -37,9 +47,9 @@ exports.registrar = async (req, res) => {
 
     res.status(201).json({
       mensagem: estoqueInsuficiente
-        ? `⚠️ Baixa registrada, mas estoque de "${mp.nome}" ficou negativo. Corrija quando possível.`
-        : '✅ Consumo registrado e estoque atualizado.',
-      alerta: estoqueInsuficiente
+        ? `⚠️ Registrado. Estoque de "${mp.nome}" ficou negativo — verifique.`
+        : `✅ Consumo de "${mp.nome}" registrado e estoque atualizado.`,
+      alerta: estoqueInsuficiente,
     });
   } catch (err) {
     await client.query('ROLLBACK');
@@ -55,15 +65,18 @@ exports.listarPorPedido = async (req, res) => {
   try {
     const r = await pool.query(
       `SELECT cp.id, cp.quantidade_usada, cp.data_consumo,
-              mp.nome AS materia_prima, mp.unidade_medida,
-              ip.personalizacao, pr.nome AS produto
+              mp.nome AS materia_prima, mp.unidade_medida
        FROM ConsumoProducao cp
        JOIN MateriaPrima mp ON mp.id = cp.materia_prima_id
-       JOIN ItemPedido ip ON ip.id = cp.item_pedido_id
-       JOIN Produto pr ON pr.id = ip.produto_id
-       WHERE ip.pedido_id = $1`,
+       WHERE cp.item_pedido_id IN (
+         SELECT id FROM ItemPedido WHERE pedido_id = $1
+       )
+       ORDER BY cp.data_consumo DESC`,
       [pedido_id]
     );
     res.json(r.rows);
-  } catch (err) { res.status(500).json({ erro: 'Erro ao buscar consumos.' }); }
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ erro: 'Erro ao buscar consumos.' });
+  }
 };
