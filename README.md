@@ -22,7 +22,7 @@ Link para acesso da modelagem visual:
 [https://dbdiagram.io/d/Modelo-BD-1-69e169810f7c9ef2c019e64c](https://dbdiagram.io/d/Modelo-BD-1-69e169810f7c9ef2c019e64c) 
 
 *Diagrama de Casos de Uso*
-
+<img width="2125" height="3406" alt="Diagrama" src="https://github.com/user-attachments/assets/46d13218-abef-4850-adbd-db41934eec72" />
 
 --- Desenvolvimento
 
