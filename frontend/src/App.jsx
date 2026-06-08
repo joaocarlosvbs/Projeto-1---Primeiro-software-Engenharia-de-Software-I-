@@ -1,72 +1,78 @@
-// App.jsx — Roteamento completo e final
+// App.jsx — Rotas atualizadas com AdminLayout e novas páginas
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import RotaProtegida from './components/RotaProtegida';
-import Navbar from './components/Navbar';
+import AdminLayout from './pages/AdminLayout';
 
-import Home           from './pages/Home';
-import Login          from './pages/Login';
-import EsqueciSenha   from './pages/EsqueciSenha';
-import Cadastro       from './pages/Cadastro';
-import Portfolio      from './pages/Portfolio';
-import Contato        from './pages/Contato';
-import AreaCliente    from './pages/AreaCliente';
-import Encomendar     from './pages/Encomendar';
-import AdminDashboard from './pages/AdminDashboard';
-import AdminProdutos  from './pages/AdminProdutos';
-import AdminFornecedores from './pages/AdminFornecedores';
-import AdminMateriaPrima from './pages/AdminMateriaPrima';
-import AdminCompras   from './pages/AdminCompras';
-import AdminClientes  from './pages/AdminClientes';
-import AdminUsuarios  from './pages/AdminUsuarios';
-import AdminFluxoCaixa from './pages/AdminFluxoCaixa';
-import AdminRelatorios from './pages/AdminRelatorios';
-import AdminLogs      from './pages/AdminLogs';
+// Páginas públicas
+import Home        from './pages/Home';
+import Login       from './pages/Login';
+import Cadastro    from './pages/Cadastro';
+import Portfolio   from './pages/Portfolio';
+import Contato     from './pages/Contato';
+import AcessoNegado from './pages/AcessoNegado';
 
-const Admin = ({ children }) => (
-  <RotaProtegida nivelRequerido="Administrador">{children}</RotaProtegida>
-);
+// Área do cliente
+import AreaCliente from './pages/AreaCliente';
+import Encomendar  from './pages/Encomendar';
 
-const paginaNaoEncontrada = (titulo, msg) => (
-  <div style={{ textAlign:'center', padding:'5rem 2rem' }}>
-    <p style={{ fontSize:'4rem', marginBottom:'1rem' }}>🚫</p>
-    <h1 style={{ color:'#1e3a8a' }}>{titulo}</h1>
-    <p style={{ color:'#64748b', marginTop:'0.5rem' }}>{msg}</p>
-  </div>
-);
+// Área admin — todas recebem o AdminLayout automaticamente via rota pai
+import AdminDashboard        from './pages/AdminDashboard';
+import AdminProdutos         from './pages/AdminProdutos';
+import AdminClientes         from './pages/AdminClientes';
+import AdminFornecedores     from './pages/AdminFornecedores';
+import AdminMateriaPrima     from './pages/AdminMateriaPrima';
+import AdminCompras          from './pages/AdminCompras';
+import AdminFluxoCaixa       from './pages/AdminFluxoCaixa';
+import AdminRelatorios       from './pages/AdminRelatorios';
+import AdminUsuarios         from './pages/AdminUsuarios';
+import AdminLogs             from './pages/AdminLogs';
+import AdminEstoque          from './pages/AdminEstoque';
+import AdminPedidosHistorico from './pages/AdminPedidosHistorico';
+
+// Wrapper que aplica layout + proteção a todas as rotas admin
+function AdminPage({ children }) {
+  return (
+    <RotaProtegida nivelRequerido="Administrador">
+      <AdminLayout>{children}</AdminLayout>
+    </RotaProtegida>
+  );
+}
 
 export default function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
-        <Navbar />
         <Routes>
           {/* Públicas */}
-          <Route path="/"              element={<Home />} />
-          <Route path="/login"         element={<Login />} />
-          <Route path="/esqueci-senha" element={<EsqueciSenha />} />
-          <Route path="/cadastro"      element={<Cadastro />} />
-          <Route path="/portfolio"     element={<Portfolio />} />
-          <Route path="/contato"       element={<Contato />} />
+          <Route path="/"          element={<Home/>} />
+          <Route path="/login"     element={<Login/>} />
+          <Route path="/cadastro"  element={<Cadastro/>} />
+          <Route path="/portfolio" element={<Portfolio/>} />
+          <Route path="/contato"   element={<Contato/>} />
+          <Route path="/acesso-negado" element={<AcessoNegado/>} />
 
-          {/* Cliente (logado) */}
-          <Route path="/cliente"    element={<RotaProtegida><AreaCliente /></RotaProtegida>} />
-          <Route path="/encomendar" element={<RotaProtegida><Encomendar /></RotaProtegida>} />
+          {/* Área do cliente */}
+          <Route path="/area-cliente" element={
+            <RotaProtegida nivelRequerido="Cliente"><AreaCliente/></RotaProtegida>
+          }/>
+          <Route path="/encomendar" element={
+            <RotaProtegida nivelRequerido="Cliente"><Encomendar/></RotaProtegida>
+          }/>
 
-          {/* Admin */}
-          <Route path="/admin"                  element={<Admin><AdminDashboard /></Admin>} />
-          <Route path="/admin/produtos"         element={<Admin><AdminProdutos /></Admin>} />
-          <Route path="/admin/fornecedores"     element={<Admin><AdminFornecedores /></Admin>} />
-          <Route path="/admin/materiaprima"     element={<Admin><AdminMateriaPrima /></Admin>} />
-          <Route path="/admin/compras"          element={<Admin><AdminCompras /></Admin>} />
-          <Route path="/admin/clientes"         element={<Admin><AdminClientes /></Admin>} />
-          <Route path="/admin/usuarios"         element={<Admin><AdminUsuarios /></Admin>} />
-          <Route path="/admin/financeiro"       element={<Admin><AdminFluxoCaixa /></Admin>} />
-          <Route path="/admin/relatorios"       element={<Admin><AdminRelatorios /></Admin>} />
-          <Route path="/admin/logs"             element={<Admin><AdminLogs /></Admin>} />
-
-          <Route path="/acesso-negado" element={paginaNaoEncontrada('Acesso Negado', 'Você não tem permissão para acessar esta página.')} />
-          <Route path="*"              element={paginaNaoEncontrada('404 — Não encontrado', 'A página que você procura não existe.')} />
+          {/* Admin — todas com sidebar */}
+          <Route path="/admin"                element={<AdminPage><AdminDashboard/></AdminPage>}/>
+          <Route path="/admin/produtos"       element={<AdminPage><AdminProdutos/></AdminPage>}/>
+          <Route path="/admin/clientes"       element={<AdminPage><AdminClientes/></AdminPage>}/>
+          <Route path="/admin/fornecedores"   element={<AdminPage><AdminFornecedores/></AdminPage>}/>
+          <Route path="/admin/materiaprima"   element={<AdminPage><AdminMateriaPrima/></AdminPage>}/>
+          <Route path="/admin/compras"        element={<AdminPage><AdminCompras/></AdminPage>}/>
+          <Route path="/admin/financeiro"     element={<AdminPage><AdminFluxoCaixa/></AdminPage>}/>
+          <Route path="/admin/relatorios"     element={<AdminPage><AdminRelatorios/></AdminPage>}/>
+          <Route path="/admin/usuarios"       element={<AdminPage><AdminUsuarios/></AdminPage>}/>
+          <Route path="/admin/logs"           element={<AdminPage><AdminLogs/></AdminPage>}/>
+          <Route path="/admin/estoque"        element={<AdminPage><AdminEstoque/></AdminPage>}/>
+          <Route path="/admin/historico"      element={<AdminPage><AdminPedidosHistorico/></AdminPage>}/>
         </Routes>
       </BrowserRouter>
     </AuthProvider>
