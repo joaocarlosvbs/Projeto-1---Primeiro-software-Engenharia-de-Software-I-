@@ -1,7 +1,8 @@
-# 🧵 Sistema de Vendas de Artesanatos — Vitrine Bordados
+# 🧵 Sistema de Vendas de Artesanatos/Bordados
 
 **FEMA — Engenharia de Software I — 2026**
 **Dupla:** João Carlos Vinhato Batista da Silva & Hugo Pecoraro da Silva
+Este projeto consiste no desenvolvimento de um software aplicando metodologias de engenharia de software, com o objetivo de criar um sistema organizado, estruturado e funcional na prática, seguindo padrões e processos utilizados no ambiente profissional.
 
 --- Fase Inicial (Levantamento de requisitos, mapas mentais, diagramas de casos de uso, modelagem de Banco de Dados)
 *Mapa Mental*
