@@ -6,6 +6,7 @@
 Este projeto consiste no desenvolvimento de um software aplicando metodologias de engenharia de software, com o objetivo de criar um sistema organizado, estruturado e funcional na prática, seguindo padrões e processos utilizados no ambiente profissional.
 
 --- Fase Inicial (Levantamento de requisitos, mapas mentais, diagramas de casos de uso, modelagem de Banco de Dados)
+
 *Mapa Mental*
 <img width="954" height="344" alt="Sistema de Gestão-vendas - Bordados" src="https://github.com/user-attachments/assets/6bfb1a1b-5525-4774-b9c9-b3782ed51a85" />
 
@@ -19,6 +20,9 @@ Link para acesso ao protótipo: https://www.figma.com/make/by9O09B6aHu2y8eMFCwNz
 
 Link para acesso da modelagem visual: 
 [https://dbdiagram.io/d/Modelo-BD-1-69e169810f7c9ef2c019e64c](https://dbdiagram.io/d/Modelo-BD-1-69e169810f7c9ef2c019e64c) 
+
+*Diagrama de Casos de Uso*
+
 
 --- Desenvolvimento
 
