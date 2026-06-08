@@ -1,22 +1,24 @@
-// App.jsx — Rotas atualizadas com AdminLayout e novas páginas
+// frontend/src/App.jsx — completo com todas as rotas
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import RotaProtegida from './components/RotaProtegida';
+import Navbar from './components/Navbar';
 import AdminLayout from './pages/AdminLayout';
 
-// Páginas públicas
-import Home        from './pages/Home';
-import Login       from './pages/Login';
-import Cadastro    from './pages/Cadastro';
-import Portfolio   from './pages/Portfolio';
-import Contato     from './pages/Contato';
+// Públicas
+import Home         from './pages/Home';
+import Login        from './pages/Login';
+import Cadastro     from './pages/Cadastro';
+import Portfolio    from './pages/Portfolio';
+import Contato      from './pages/Contato';
 import AcessoNegado from './pages/AcessoNegado';
+import EsqueciSenha from './pages/EsqueciSenha';
 
-// Área do cliente
+// Cliente
 import AreaCliente from './pages/AreaCliente';
 import Encomendar  from './pages/Encomendar';
 
-// Área admin — todas recebem o AdminLayout automaticamente via rota pai
+// Admin
 import AdminDashboard        from './pages/AdminDashboard';
 import AdminProdutos         from './pages/AdminProdutos';
 import AdminClientes         from './pages/AdminClientes';
@@ -30,8 +32,11 @@ import AdminLogs             from './pages/AdminLogs';
 import AdminEstoque          from './pages/AdminEstoque';
 import AdminPedidosHistorico from './pages/AdminPedidosHistorico';
 
-// Wrapper que aplica layout + proteção a todas as rotas admin
-function AdminPage({ children }) {
+function LayoutPublico({ children }) {
+  return <><Navbar />{children}</>;
+}
+
+function LayoutAdmin({ children }) {
   return (
     <RotaProtegida nivelRequerido="Administrador">
       <AdminLayout>{children}</AdminLayout>
@@ -45,34 +50,41 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           {/* Públicas */}
-          <Route path="/"          element={<Home/>} />
-          <Route path="/login"     element={<Login/>} />
-          <Route path="/cadastro"  element={<Cadastro/>} />
-          <Route path="/portfolio" element={<Portfolio/>} />
-          <Route path="/contato"   element={<Contato/>} />
-          <Route path="/acesso-negado" element={<AcessoNegado/>} />
+          <Route path="/"              element={<LayoutPublico><Home/></LayoutPublico>} />
+          <Route path="/portfolio"     element={<LayoutPublico><Portfolio/></LayoutPublico>} />
+          <Route path="/contato"       element={<LayoutPublico><Contato/></LayoutPublico>} />
+          <Route path="/login"         element={<LayoutPublico><Login/></LayoutPublico>} />
+          <Route path="/cadastro"      element={<LayoutPublico><Cadastro/></LayoutPublico>} />
+          <Route path="/acesso-negado" element={<LayoutPublico><AcessoNegado/></LayoutPublico>} />
+          <Route path="/esqueci-senha" element={<LayoutPublico><EsqueciSenha/></LayoutPublico>} />
 
-          {/* Área do cliente */}
+          {/* Cliente */}
           <Route path="/area-cliente" element={
-            <RotaProtegida nivelRequerido="Cliente"><AreaCliente/></RotaProtegida>
+            <RotaProtegida nivelRequerido="Cliente">
+              <LayoutPublico><AreaCliente/></LayoutPublico>
+            </RotaProtegida>
           }/>
           <Route path="/encomendar" element={
-            <RotaProtegida nivelRequerido="Cliente"><Encomendar/></RotaProtegida>
+            <RotaProtegida nivelRequerido="Cliente">
+              <LayoutPublico><Encomendar/></LayoutPublico>
+            </RotaProtegida>
           }/>
 
-          {/* Admin — todas com sidebar */}
-          <Route path="/admin"                element={<AdminPage><AdminDashboard/></AdminPage>}/>
-          <Route path="/admin/produtos"       element={<AdminPage><AdminProdutos/></AdminPage>}/>
-          <Route path="/admin/clientes"       element={<AdminPage><AdminClientes/></AdminPage>}/>
-          <Route path="/admin/fornecedores"   element={<AdminPage><AdminFornecedores/></AdminPage>}/>
-          <Route path="/admin/materiaprima"   element={<AdminPage><AdminMateriaPrima/></AdminPage>}/>
-          <Route path="/admin/compras"        element={<AdminPage><AdminCompras/></AdminPage>}/>
-          <Route path="/admin/financeiro"     element={<AdminPage><AdminFluxoCaixa/></AdminPage>}/>
-          <Route path="/admin/relatorios"     element={<AdminPage><AdminRelatorios/></AdminPage>}/>
-          <Route path="/admin/usuarios"       element={<AdminPage><AdminUsuarios/></AdminPage>}/>
-          <Route path="/admin/logs"           element={<AdminPage><AdminLogs/></AdminPage>}/>
-          <Route path="/admin/estoque"        element={<AdminPage><AdminEstoque/></AdminPage>}/>
-          <Route path="/admin/historico"      element={<AdminPage><AdminPedidosHistorico/></AdminPage>}/>
+          {/* Admin */}
+          <Route path="/admin"               element={<LayoutAdmin><AdminDashboard/></LayoutAdmin>}/>
+          <Route path="/admin/produtos"      element={<LayoutAdmin><AdminProdutos/></LayoutAdmin>}/>
+          <Route path="/admin/clientes"      element={<LayoutAdmin><AdminClientes/></LayoutAdmin>}/>
+          <Route path="/admin/fornecedores"  element={<LayoutAdmin><AdminFornecedores/></LayoutAdmin>}/>
+          <Route path="/admin/materiaprima"  element={<LayoutAdmin><AdminMateriaPrima/></LayoutAdmin>}/>
+          <Route path="/admin/compras"       element={<LayoutAdmin><AdminCompras/></LayoutAdmin>}/>
+          <Route path="/admin/financeiro"    element={<LayoutAdmin><AdminFluxoCaixa/></LayoutAdmin>}/>
+          <Route path="/admin/relatorios"    element={<LayoutAdmin><AdminRelatorios/></LayoutAdmin>}/>
+          <Route path="/admin/usuarios"      element={<LayoutAdmin><AdminUsuarios/></LayoutAdmin>}/>
+          <Route path="/admin/logs"          element={<LayoutAdmin><AdminLogs/></LayoutAdmin>}/>
+          {/* Novas páginas do changes6 */}
+          <Route path="/admin/estoque"       element={<LayoutAdmin><AdminEstoque/></LayoutAdmin>}/>
+          <Route path="/admin/pedidos"       element={<LayoutAdmin><AdminPedidosHistorico/></LayoutAdmin>}/>
+          <Route path="/admin/historico"     element={<LayoutAdmin><AdminPedidosHistorico/></LayoutAdmin>}/>
         </Routes>
       </BrowserRouter>
     </AuthProvider>

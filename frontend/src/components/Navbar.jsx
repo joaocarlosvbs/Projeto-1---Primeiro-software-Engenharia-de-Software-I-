@@ -40,7 +40,7 @@ export default function Navbar() {
           <>
             {isAdmin
               ? <LinkNav to="/admin">⚙️ Painel Admin</LinkNav>
-              : <LinkNav to="/cliente">📦 Meus Pedidos</LinkNav>
+              : <LinkNav to="/area-cliente">📦 Meus Pedidos</LinkNav>
             }
             <div style={s.usuarioInfo}>
               <span style={s.nome}>👤 {usuario.nome.split(' ')[0]}</span>

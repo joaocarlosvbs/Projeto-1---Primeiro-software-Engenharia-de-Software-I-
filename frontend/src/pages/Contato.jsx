@@ -12,7 +12,7 @@ export default function Contato() {
           <span style={styles.icone}>📱</span>
           <h3>WhatsApp</h3>
           <p style={{ color: '#555' }}>Mande uma mensagem e respondemos em breve</p>
-          <a href="https://wa.me/55SEUNUMERO" target="_blank" rel="noreferrer" style={styles.btn}>
+          <a href="https://wa.me/5518996284388" target="_blank" rel="noreferrer" style={styles.btn}>
             Chamar no WhatsApp
           </a>
         </div>
@@ -20,8 +20,8 @@ export default function Contato() {
         <div style={styles.card}>
           <span style={styles.icone}>📧</span>
           <h3>E-mail</h3>
-          <p style={{ color: '#555' }}>bordados@email.com</p>
-          <a href="mailto:bordados@email.com" style={styles.btn}>Enviar e-mail</a>
+          <p style={{ color: '#555' }}>cleo-maria@hotmail.com</p>
+          <a href="mailto:cleo-maria@hotmail.com" style={styles.btn}>Enviar e-mail</a>
         </div>
 
         <div style={styles.card}>

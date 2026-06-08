@@ -1,7 +1,8 @@
-// Home.jsx — Página inicial com textos configuráveis via site.js
+// Home.jsx — corrigido: rota /area-cliente e SecaoBordados adicionada
 import { Link } from 'react-router-dom';
 import { SITE } from '../config/site';
 import { useAuth } from '../context/AuthContext';
+//import SecaoBordados from './SecaoBordados';
 
 export default function Home() {
   const { usuario } = useAuth();
@@ -10,7 +11,7 @@ export default function Home() {
     <div>
       {/* HERO */}
       <section style={s.hero}>
-        <div style={s.heroContent} className="fade-in">
+        <div style={s.heroContent}>
           <span style={s.badge}>✨ Artesanato com qualidade</span>
           <h1 style={s.heroTitulo}>{SITE.slogan}</h1>
           <p style={s.heroSub}>{SITE.descricao}</p>
@@ -18,7 +19,9 @@ export default function Home() {
             <Link to="/portfolio" style={s.btnPrimario}>Ver Portfólio</Link>
             {!usuario
               ? <Link to="/cadastro" style={s.btnSecundario}>Criar conta grátis</Link>
-              : <Link to={usuario.nivel === 'Administrador' ? '/admin' : '/cliente'} style={s.btnSecundario}>
+              : <Link
+                  to={usuario.nivel === 'Administrador' ? '/admin' : '/area-cliente'}
+                  style={s.btnSecundario}>
                   Minha área →
                 </Link>
             }
@@ -84,6 +87,10 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── SEÇÃO DE BORDADOS (detalhamentos e acabamentos) ── */}
+      {/*<SecaoBordados/>*/}
+      
+
       {/* CTA */}
       <section style={s.cta}>
         <h2 style={{color:'#fff', marginBottom:'0.75rem', fontSize:'1.8rem'}}>
@@ -116,19 +123,19 @@ const s = {
   heroTitulo: { color:'#fff', fontSize:'2.8rem', fontWeight:'800', margin:'0 0 1rem', lineHeight:1.2, letterSpacing:'-0.5px' },
   heroSub: { color:'#bfdbfe', fontSize:'1.1rem', marginBottom:'2.25rem', lineHeight:1.7 },
   heroAcoes: { display:'flex', gap:'1rem', justifyContent:'center', flexWrap:'wrap' },
-  btnPrimario: { backgroundColor:'#f97316', color:'#fff', padding:'0.8rem 1.75rem', borderRadius:'10px', fontWeight:'bold', fontSize:'1rem', display:'inline-block', boxShadow:'0 4px 12px rgba(249,115,22,0.4)' },
-  btnSecundario: { backgroundColor:'transparent', color:'#fff', padding:'0.8rem 1.75rem', borderRadius:'10px', fontWeight:'bold', fontSize:'1rem', display:'inline-block', border:'2px solid rgba(255,255,255,0.5)' },
-  btnWpp: { backgroundColor:'#25d366', color:'#fff', padding:'0.8rem 1.75rem', borderRadius:'10px', fontWeight:'bold', fontSize:'1rem', display:'inline-block' },
+  btnPrimario: { backgroundColor:'#f97316', color:'#fff', padding:'0.8rem 1.75rem', borderRadius:'10px', fontWeight:'bold', fontSize:'1rem', display:'inline-block', boxShadow:'0 4px 12px rgba(249,115,22,0.4)', textDecoration:'none' },
+  btnSecundario: { backgroundColor:'transparent', color:'#fff', padding:'0.8rem 1.75rem', borderRadius:'10px', fontWeight:'bold', fontSize:'1rem', display:'inline-block', border:'2px solid rgba(255,255,255,0.5)', textDecoration:'none' },
+  btnWpp: { backgroundColor:'#25d366', color:'#fff', padding:'0.8rem 1.75rem', borderRadius:'10px', fontWeight:'bold', fontSize:'1rem', display:'inline-block', textDecoration:'none' },
   secao: { maxWidth:'1100px', margin:'0 auto', padding:'4rem 1.5rem', textAlign:'center' },
   secaoCinza: { backgroundColor:'#f8fafc' },
   secaoTitulo: { color:'#1e3a8a', fontSize:'1.7rem', fontWeight:'700', marginBottom:'2.5rem' },
   grid3: { display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(240px, 1fr))', gap:'1.5rem' },
   grid4: { display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(160px, 1fr))', gap:'1rem' },
-  card: { backgroundColor:'#fff', borderRadius:'16px', padding:'2rem 1.5rem', boxShadow:'0 2px 16px rgba(0,0,0,0.06)', display:'flex', flexDirection:'column', alignItems:'center', gap:'0.75rem', transition:'transform 0.2s' },
+  card: { backgroundColor:'#fff', borderRadius:'16px', padding:'2rem 1.5rem', boxShadow:'0 2px 16px rgba(0,0,0,0.06)', display:'flex', flexDirection:'column', alignItems:'center', gap:'0.75rem' },
   cardIcone: { fontSize:'2.5rem', width:'60px', height:'60px', display:'flex', alignItems:'center', justifyContent:'center', backgroundColor:'#f0f4ff', borderRadius:'50%' },
   cardTitulo: { color:'#1e3a8a', fontWeight:'700', fontSize:'1.05rem', margin:0 },
   cardDesc: { color:'#64748b', fontSize:'0.95rem', margin:0, lineHeight:1.6 },
-  categoria: { backgroundColor:'#fff', borderRadius:'12px', padding:'1.25rem', display:'flex', flexDirection:'column', alignItems:'center', gap:'0.5rem', boxShadow:'0 2px 8px rgba(0,0,0,0.06)', transition:'all 0.2s' },
+  categoria: { backgroundColor:'#fff', borderRadius:'12px', padding:'1.25rem', display:'flex', flexDirection:'column', alignItems:'center', gap:'0.5rem', boxShadow:'0 2px 8px rgba(0,0,0,0.06)', textDecoration:'none' },
   passo: { backgroundColor:'#f0f4ff', borderRadius:'16px', padding:'2rem 1.5rem', display:'flex', flexDirection:'column', alignItems:'center', gap:'0.75rem' },
   passoNum: { width:'48px', height:'48px', backgroundColor:'#1e3a8a', color:'#fff', borderRadius:'50%', display:'flex', alignItems:'center', justifyContent:'center', fontWeight:'800', fontSize:'1.3rem' },
   cta: { backgroundColor:'#1e3a8a', padding:'4.5rem 1.5rem', textAlign:'center' },

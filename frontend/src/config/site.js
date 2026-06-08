@@ -6,10 +6,10 @@ export const SITE = {
   nome:      'Ateliê Bordados',
   slogan:    'Arte bordada com amor',
   descricao: 'Peças artesanais únicas feitas à mão com carinho e dedicação.',
-  whatsapp:  '5518999999999',
-  email:     'contato@bordados.com',
+  whatsapp:  '5518996284388',
+  email:     'cleo-maria@hotmail.com',
   instagram: 'https://instagram.com/seuperfil',
-  cidade:    'Assis — SP',
+  cidade:    'Cândido Mota — SP',
 };
 
 export const CATEGORIAS = [
