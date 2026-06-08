@@ -4,8 +4,12 @@
 **Dupla:** João Carlos Vinhato Batista da Silva & Hugo Pecoraro da Silva
 
 --- Fase Inicial (Levantamento de requisitos, mapas mentais, diagramas de casos de uso, modelagem de Banco de Dados)
+*Mapa Mental*
+<img width="954" height="344" alt="Sistema de Gestão-vendas - Bordados" src="https://github.com/user-attachments/assets/6bfb1a1b-5525-4774-b9c9-b3782ed51a85" />
 
-
+*Prototipação das Interfaces*
+<img width="1919" height="897" alt="image" src="https://github.com/user-attachments/assets/d5f6e6fa-7787-4436-af9e-cb33583e21e9" />
+Link para acesso ao protótipo: https://www.figma.com/make/by9O09B6aHu2y8eMFCwNz6/Sistema-de-Vendas-de-Bordados--Prot%C3%B3tipo-das-interfaces-?t=OymS2oUYvLZd4U5Z-20&fullscreen=1 
 
 *Modelagem do Banco de Dados*
 <img width="1361" height="1237" alt="Modelo BD 1 (1)" src="https://github.com/user-attachments/assets/a1254a0b-ae24-4985-80f3-531767837c78" />
