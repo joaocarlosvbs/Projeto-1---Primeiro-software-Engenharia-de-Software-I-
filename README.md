@@ -3,7 +3,18 @@
 **FEMA — Engenharia de Software I — 2026**
 **Dupla:** João Carlos Vinhato Batista da Silva & Hugo Pecoraro da Silva
 
----
+--- Fase Inicial (Levantamento de requisitos, mapas mentais, diagramas de casos de uso, modelagem de Banco de Dados)
+
+
+
+*Modelagem do Banco de Dados*
+<img width="1361" height="1237" alt="Modelo BD 1 (1)" src="https://github.com/user-attachments/assets/a1254a0b-ae24-4985-80f3-531767837c78" />
+[Modelo BD 1.pdf](https://github.com/user-attachments/files/27070890/Modelo.BD.1.pdf)
+
+Link para acesso da modelagem visual: 
+[https://dbdiagram.io/d/Modelo-BD-1-69e169810f7c9ef2c019e64c](https://dbdiagram.io/d/Modelo-BD-1-69e169810f7c9ef2c019e64c) 
+
+--- Desenvolvimento
 
 ## 🛠️ Stack Tecnológica
 
